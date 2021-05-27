@@ -7,9 +7,8 @@ A new Flutter project.
 #This project is a flutter clean architecrute boilerplate with:
 - Firebase, analytics
 - Sentry
-- BLOC
+- Getx
 - Dio
-- Get it
 
 # For new project: 
 1. Create new sentry project and change the dns key in app_config.dart
