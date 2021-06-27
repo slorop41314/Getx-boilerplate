@@ -4,6 +4,7 @@ import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_
 import 'package:flutter/material.dart';
 import 'package:getx_boilerplate/features/presentation/components/widgets/app_logo.dart';
 import 'package:get/get.dart';
+import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
 
 class SplashScreen extends StatefulWidget {
   static const route_name = "/";
@@ -16,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2), () {
-      Get.offNamed(LoginScreen.route_name);
+      Get.offNamed(BottomTab.route_name);
     });
   }
 

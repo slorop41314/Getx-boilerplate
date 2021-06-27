@@ -39,6 +39,8 @@ dependencies:
   permission_handler: ^7.1.0
   shimmer_animation: ^2.0.0
   get: ^4.1.4
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.2
 
   flutter_localizations:
     sdk: flutter
@@ -46,6 +48,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^1.1.0
+  build_runner: ^2.0.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

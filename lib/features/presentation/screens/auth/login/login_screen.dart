@@ -56,31 +56,34 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Column _buildForm() {
-    return Column(
-      children: [
-        CustomInput(
-          label: "Email",
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        CustomInput(
-          label: "Password",
-          secureText: true,
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        CustomButton(
-          label: "LOGIN",
-          onPressed: () {
-            Get.offNamed(
-              BottomTab.route_name,
-            );
-          },
-        )
-      ],
+  Form _buildForm() {
+    return Form(
+          child: Column(
+        children: [
+          CustomInput(
+            label: "Email",
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          CustomInput(
+            label: "Password",
+            secureText: true,
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          CustomButton(
+            label: "LOGIN",
+            onPressed: () {
+              // if(GetUtils.is)
+              Get.offNamed(
+                BottomTab.route_name,
+              );
+            },
+          )
+        ],
+      ),
     );
   }
 }
