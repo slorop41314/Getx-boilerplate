@@ -13,6 +13,9 @@ class CustomInput extends StatefulWidget {
   final bool isRequired;
   final bool isInputArea;
   final bool isDisabled;
+  final List<TextInputFormatter>? formatter;
+  final String? Function(String?)? validator;
+  final String? initialValue;
 
   CustomInput({
     this.controller,
@@ -27,6 +30,9 @@ class CustomInput extends StatefulWidget {
     this.isRequired = false,
     this.isDisabled = false,
     this.isInputArea = false,
+    this.formatter,
+    this.validator,
+    this.initialValue,
   });
 
   @override
