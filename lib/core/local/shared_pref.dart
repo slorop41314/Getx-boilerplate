@@ -4,8 +4,9 @@ class SharedPreferencesManager {
   SharedPreferences? sharedPreferences;
 
   static const String keyAccessToken = 'accessToken';
+  static const String keyUserData = 'user_data';
   static const String keyRole = 'user_role';
-  static const String keyUsername = 'username';
+  static const String keyFcmToken = 'fcm_token';
 
   SharedPreferencesManager({required this.sharedPreferences});
 

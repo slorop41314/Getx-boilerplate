@@ -1,8 +1,11 @@
 import 'package:getx_boilerplate/core/local/shared_pref.dart';
 
 abstract class AuthLocalDataSource {
-  Future<void> saveSessionData();
+  Future<void> saveSessionData(dynamic json);
+  Future<void> saveAuthToken(String token);
+  Future<void> clearSessionData();
   dynamic getSessionData();
+  String? getFcmToken();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
@@ -11,19 +14,29 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   AuthLocalDataSourceImpl({required this.sharedPref});
 
   @override
-  Future<void> saveSessionData() async {}
+  Future<void> saveSessionData(dynamic json) async {
+    await this.sharedPref.putString(SharedPreferencesManager.keyUserData, json);
+  }
+
+  @override
+  Future<void> saveAuthToken(String token) async {
+    await this
+        .sharedPref
+        .putString(SharedPreferencesManager.keyAccessToken, token);
+  }
 
   @override
   dynamic getSessionData() {
-    // final localAccessToken = this
-    //     .sharedPreferencesManager
-    //     .getString(SharedPreferencesManager.keyAccessToken);
-    // final userRole = this
-    //     .sharedPreferencesManager
-    //     .getString(SharedPreferencesManager.keyRole);
-    // if (localAccessToken != null && userRole != null) {
-    //   apiProvider.accessToken = localAccessToken;
-    //   return userRole;
-    // }}
+    return this.sharedPref.getString(SharedPreferencesManager.keyUserData);
+  }
+
+  @override
+  Future<void> clearSessionData() async {
+    await this.sharedPref.clearAll();
+  }
+
+  @override
+  String? getFcmToken() {
+    return this.sharedPref.getString(SharedPreferencesManager.keyFcmToken);
   }
 }

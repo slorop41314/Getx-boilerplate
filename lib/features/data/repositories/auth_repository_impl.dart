@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:getx_boilerplate/core/network/api_provider.dart';
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_local_data_source.dart';
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_remote_data_source.dart';
+import 'package:getx_boilerplate/features/domain/entities/user.dart';
 import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -17,7 +18,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required this.localDataSource,
   });
 
-  Future<dynamic> login(String email, String password) async {
+  Future<User> login(String email, String password) async {
     try {
       final param = {
         "email": email,
@@ -25,8 +26,14 @@ class AuthRepositoryImpl implements AuthRepository {
       };
       final response = await this.remoteDataSource.login(param);
       if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.data);
-        return responseData;
+        final bodyData = response.data["data"];
+        await this.localDataSource.saveAuthToken(
+              bodyData["token"],
+            );
+        await this.localDataSource.saveSessionData(
+              jsonEncode(bodyData["user"]),
+            );
+        return User.fromJson(bodyData["user"]);
       }
       throw response;
     } on DioError catch (err) {
@@ -34,8 +41,18 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  String? checkIsLoggedIn() {
+  User? getLoggedInUserData() {
     final data = this.localDataSource.getSessionData();
-    return null;
+    if (data == null) return null;
+
+    return User.fromJson(
+      jsonDecode(data),
+    );
+  }
+
+  @override
+  Future<void> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
   }
 }

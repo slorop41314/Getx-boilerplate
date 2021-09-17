@@ -1,5 +1,8 @@
-abstract class AuthRepository {
-  Future<dynamic> login(String email, String password);
+import 'package:getx_boilerplate/features/domain/entities/user.dart';
 
-  dynamic? checkIsLoggedIn();
+abstract class AuthRepository {
+  Future<User> login(String email, String password);
+
+  User? getLoggedInUserData();
+  Future<void> logout();
 }

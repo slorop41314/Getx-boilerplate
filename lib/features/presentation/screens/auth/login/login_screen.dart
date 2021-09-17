@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:getx_boilerplate/features/presentation/components/widgets/app_logo.dart';
-import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
+import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route_name = "/login";
@@ -11,6 +11,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final LoginController _controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Form _buildForm() {
     return Form(
-          child: Column(
+      child: Column(
         children: [
           CustomInput(
             label: "Email",
@@ -75,12 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           CustomButton(
             label: "LOGIN",
-            onPressed: () {
-              // if(GetUtils.is)
-              Get.offNamed(
-                BottomTab.route_name,
-              );
-            },
+            onPressed: _controller.loginWithEmail,
           )
         ],
       ),
