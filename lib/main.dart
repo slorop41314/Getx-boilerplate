@@ -3,27 +3,17 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_boilerplate/core/lang/lang_config.dart';
-import 'package:getx_boilerplate/core/utils/app_config.dart';
 import 'package:getx_boilerplate/features/presentation/routes/app_routes.dart';
 import 'package:getx_boilerplate/features/presentation/utils/app_theme.dart';
 import 'package:getx_boilerplate/main_binding.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MainBinding().dependencies();
-  await SentryFlutter.init(
-    (options) => options.dsn = sentryDsnKey,
-    appRunner: () => runApp(App()),
-  );
+  runApp(App());
 }
 
-class App extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
+class App extends StatelessWidget {
   FirebaseAnalytics analytics = FirebaseAnalytics();
 
   @override

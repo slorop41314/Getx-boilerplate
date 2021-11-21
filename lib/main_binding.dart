@@ -32,25 +32,25 @@ class MainBinding extends Bindings {
       permanent: true,
     );
     // DATA SOURCE
-    Get.put<AuthLocalDataSource>(
-      AuthLocalDataSourceImpl(
+    Get.lazyPut<AuthLocalDataSource>(
+      () => AuthLocalDataSourceImpl(
         sharedPref: Get.find(),
       ),
-      permanent: true,
+      fenix: true,
     );
-    Get.put<AuthRemoteDataSource>(
-      AuthRemoteDataSourceImpl(
+    Get.lazyPut<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(
         apiProvider: Get.find(),
       ),
-      permanent: true,
+      fenix: true,
     );
-    Get.put<AuthRepository>(
-      AuthRepositoryImpl(
+    Get.lazyPut<AuthRepository>(
+      () => AuthRepositoryImpl(
         remoteDataSource: Get.find(),
         localDataSource: Get.find(),
         apiProvider: Get.find(),
       ),
-      permanent: true,
+      fenix: true,
     );
   }
 }
