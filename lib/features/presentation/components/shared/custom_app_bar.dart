@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       title: Text(
         title.toUpperCase(),
-        style: headerTextStyle,
+        style: CustomTextStyles.semibold16,
       ),
       // centerTitle: true,
       backgroundColor: Colors.white,

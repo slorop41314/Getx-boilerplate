@@ -47,7 +47,7 @@ class _SettingScreenState extends State<SettingScreen>
       children: [
         Text(
           sectionTitle,
-          style: headerTextStyle,
+          style: CustomTextStyles.semibold16,
         ),
         SizedBox(
           height: 8,

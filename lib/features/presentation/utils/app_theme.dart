@@ -16,10 +16,8 @@ ThemeData appTheme() {
     //   color: Colors.black,
     // ),
     primaryColor: kColorPrimary,
-    accentColor: kColorPrimary,
     hintColor: Color(0xffcdd3e0),
     dividerColor: Colors.grey[100],
-    buttonColor: kColorPrimary,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       button: GoogleFonts.rubik(
