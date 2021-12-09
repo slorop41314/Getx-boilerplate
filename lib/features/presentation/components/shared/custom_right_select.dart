@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_boilerplate/features/presentation/utils/common.dart';
+part of 'shared.dart';
 
 class CustomRightSelect<T> extends StatelessWidget {
   const CustomRightSelect({
@@ -29,15 +27,16 @@ class CustomRightSelect<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(
-          () => _CustomSelectPage(
-            label: label,
-            options: options,
-            selectedValue: selectedValue,
-            onTapOption: onTapOption,
-            optionsBuilder: optionsBuilder,
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => _CustomSelectPage(
+              label: label,
+              options: options,
+              selectedValue: selectedValue,
+              onTapOption: onTapOption,
+              optionsBuilder: optionsBuilder,
+            ),
           ),
-          fullscreenDialog: true,
         );
       },
       child: AbsorbPointer(
@@ -125,7 +124,8 @@ class _CustomSelectPage<T> extends StatelessWidget {
             ),
             onTap: () {
               onTapOption?.call(item);
-              Get.back();
+
+              Navigator.of(context).pop();
             },
             title: Text(optionsBuilder?.call(item) ?? item.toString()),
             trailing: item == selectedValue

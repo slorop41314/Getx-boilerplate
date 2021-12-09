@@ -13,6 +13,7 @@ part 'custom_input.dart';
 part 'custom_rich_text.dart';
 part 'custom_time_picker.dart';
 part 'loading_indicator.dart';
+part 'custom_right_select.dart';
 
 String imagePlaceholder =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtsBeH_z-vguCC5jLivFO47pncpi8hC041w&usqp=CAU";
