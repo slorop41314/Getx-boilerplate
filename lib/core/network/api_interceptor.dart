@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:getx_boilerplate/core/local/shared_pref.dart';
 
@@ -10,8 +12,8 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (options.data != null) {
-      print("Body: ${options.data}, path: ${options.path}");
+    if (options.data != null && !(options.data is FormData)) {
+      print("Body: ${jsonEncode(options.data)}, path: ${options.path}");
     }
     final accessToken = this
         .sharedPreferencesManager
@@ -26,8 +28,11 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print("Response: ${response.data}");
-    print("<-- END HTTP RESPONSE -->");
+    print(
+        "Response: ${response.statusCode} ${response.realUri} ${response.data}");
+
+    response.data = jsonDecode(response.data);
+
     return handler.next(response);
   }
 

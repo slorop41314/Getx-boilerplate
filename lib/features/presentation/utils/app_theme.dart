@@ -15,7 +15,7 @@ ThemeData appTheme() {
     // iconTheme: IconThemeData(
     //   color: Colors.black,
     // ),
-    primaryColor: kColorPrimary,
+    primaryColor: AppColors.primary,
     hintColor: Color(0xffcdd3e0),
     dividerColor: Colors.grey[100],
     scaffoldBackgroundColor: Colors.white,
@@ -31,15 +31,15 @@ ThemeData appTheme() {
     inputDecorationTheme: InputDecorationTheme(
       disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-        color: kColorBorder,
+        color: AppColors.border,
       )),
       enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-        color: kColorBorder,
+        color: AppColors.border,
       )),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-        color: kColorPrimary.withOpacity(0.5),
+        color: AppColors.primary.withOpacity(0.5),
       )),
       errorBorder: OutlineInputBorder(
           borderSide: BorderSide(

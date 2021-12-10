@@ -5,6 +5,12 @@ abstract class ApiProvider {
   Future<Response> login(
     Map<String, dynamic> data,
   );
+  Future<Response> resetPassword(
+    Map<String, dynamic> data,
+  );
+  Future<Response> changePassword(
+    Map<String, dynamic> data,
+  );
 }
 
 class ApiProviderImpl implements ApiProvider {
@@ -31,5 +37,17 @@ class ApiProviderImpl implements ApiProvider {
       "/login",
       data: data,
     );
+  }
+
+  @override
+  Future<Response> changePassword(Map<String, dynamic> data) {
+    // TODO: implement changePassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Response> resetPassword(Map<String, dynamic> data) {
+    // TODO: implement resetPassword
+    throw UnimplementedError();
   }
 }

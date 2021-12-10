@@ -66,7 +66,7 @@ class CustomDatePicker extends StatelessWidget {
                   this.onDateSelected != null
                       ? Icon(
                           Icons.date_range_outlined,
-                          // color: kColorPrimary,
+                          // color: AppColors.primary,
                         )
                       : SizedBox(),
                 ],

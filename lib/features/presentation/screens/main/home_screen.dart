@@ -63,7 +63,7 @@ class _CustomImageCarouselState extends State<CustomImageCarousel> {
             children: [1, 2, 3, 4]
                 .map(
                   (e) => Container(
-                    color: kColorPrimary,
+                    color: AppColors.primary,
                   ),
                 )
                 .toList(),
@@ -78,7 +78,7 @@ class _CustomImageCarouselState extends State<CustomImageCarousel> {
             final isCurrent = currentIndex == e.key;
             return AnimatedContainer(
               duration: Duration(milliseconds: 500),
-              color: isCurrent ? kColorPrimary : Colors.grey,
+              color: isCurrent ? AppColors.primary : Colors.grey,
               height: isCurrent ? 8 : 4,
               width: isCurrent ? 15 : 4,
               // decoration: BoxDecoration(borderRadius: ),

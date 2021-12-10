@@ -55,7 +55,7 @@ class CustomRightSelect<T> extends StatelessWidget {
                     height: 18,
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
-                      color: kColorPrimary,
+                      color: AppColors.primary,
                     ),
                   )
                 : Icon(

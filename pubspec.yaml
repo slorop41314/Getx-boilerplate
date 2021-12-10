@@ -35,9 +35,9 @@ dependencies:
   google_fonts: ^2.1.0
   firebase_core: ^1.5.0
   firebase_analytics: ^8.3.0
-  permission_handler: ^7.2.0
+  permission_handler: ^8.3.0
   shimmer_animation: ^2.1.0+1
-  get: ^4.3.8
+  get: ^4.5.1
   hive_flutter: ^1.1.0
   path_provider: ^2.0.2
   mockito: ^5.0.14

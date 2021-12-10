@@ -2,6 +2,9 @@ import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_binding.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_screen.dart';
 import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
+import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab_binding.dart';
+import 'package:getx_boilerplate/features/presentation/screens/main/change_password/change_password_binding.dart';
+import 'package:getx_boilerplate/features/presentation/screens/main/change_password/change_password_screen.dart';
 import 'package:getx_boilerplate/features/presentation/screens/splash/splash_binding.dart';
 import 'package:getx_boilerplate/features/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +27,12 @@ class AppRoutes {
       GetPage(
         name: BottomTab.route_name,
         page: () => BottomTab(),
+        binding: BottomTabBinding(),
+      ),
+      GetPage(
+        name: ChangePasswordPage.route_name,
+        page: () => ChangePasswordPage(),
+        binding: ChangePasswordBinding(),
       )
     ];
   }

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:getx_boilerplate/core/network/api_provider.dart';
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_local_data_source.dart';
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_remote_data_source.dart';
+import 'package:getx_boilerplate/features/domain/entities/request/change_password_request.dart';
 import 'package:getx_boilerplate/features/domain/entities/user.dart';
 import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
 
@@ -51,8 +52,34 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<void> logout() async {
+    localDataSource.clearSessionData();
+  }
+
+  @override
+  Future<void> changePassword(ChangePasswordRequest request) async {
+    try {
+      final res = await remoteDataSource.resetPassword(
+        request.toJson(),
+      );
+      return;
+    } catch (err) {
+      print(err);
+      return Future.error(err);
+    }
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    try {
+      final request = {
+        "email": email,
+      };
+      final res = await remoteDataSource.resetPassword(request);
+      return;
+    } catch (err) {
+      print(err);
+      return Future.error(err);
+    }
   }
 }
