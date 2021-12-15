@@ -10,6 +10,8 @@ class OverlayUtils {
         message: message,
         duration: Duration(seconds: 2),
         backgroundColor: Colors.red,
+        margin: EdgeInsets.all(16),
+        borderRadius: 8,
         snackPosition: SnackPosition.TOP,
       ),
     );
@@ -28,11 +30,19 @@ class OverlayUtils {
   }
 
   static void showNotif({String? title, String? message}) {
-    Get.snackbar(
-      title ?? "",
-      message ?? "",
-      colorText: AppColors.primaryText,
-      backgroundColor: Colors.white,
+    Get.showSnackbar(
+      GetSnackBar(
+        title: title,
+        message: message,
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.black54,
+        margin: EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
+        borderRadius: 8,
+        snackPosition: SnackPosition.TOP,
+      ),
     );
   }
 
