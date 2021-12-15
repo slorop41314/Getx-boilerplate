@@ -2,31 +2,37 @@ part of 'shared.dart';
 
 class CustomDatePicker extends StatelessWidget {
   final String? label;
-  final String? value;
-  final String? placeholder;
-  final void Function(String value)? onDateSelected;
+  final DateTime? value;
+  final String placeholder;
+  final void Function(DateTime value)? onDateSelected;
   final bool isRequired;
-  final String format;
-
+  final String? format;
+  final DateTime? lastDate;
+  final DateTime? firstDate;
+  final DateTime? initialDate;
+  final bool onlyBottomBorder;
   CustomDatePicker({
     this.label,
-    @required this.value,
+    required this.value,
     this.placeholder = "Choose date",
     this.onDateSelected,
     this.isRequired = false,
-    this.format = "dd MMM yyyy",
+    this.format,
+    this.initialDate,
+    this.firstDate,
+    this.lastDate,
+    this.onlyBottomBorder = false,
   });
 
   void _openDatePicker(BuildContext context) async {
     var result = await showDatePicker(
       context: context,
-      initialDate:
-          this.value != null ? Jiffy(value, format).dateTime : DateTime.now(),
-      firstDate: Jiffy().subtract(months: 6).dateTime,
-      lastDate: Jiffy().add(months: 6).dateTime,
+      initialDate: initialDate ?? DateTime.now(),
+      lastDate: lastDate ?? DateTime.now(),
+      firstDate: firstDate ?? DateTime(1960, 1, 1),
     );
     if (result != null && this.onDateSelected != null) {
-      this.onDateSelected!(Jiffy(result).format(this.format));
+      this.onDateSelected?.call(result);
     }
   }
 
@@ -35,38 +41,48 @@ class CustomDatePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        this.label != null ? Text(this.label!) : SizedBox(),
-        TextButton(
-          onPressed: onDateSelected != null
+        this.label != null
+            ? Text(
+                this.label!,
+              )
+            : SizedBox(),
+        InkWell(
+          onTap: onDateSelected != null
               ? () {
                   _openDatePicker(context);
                 }
               : null,
           child: Container(
+            decoration: this.onlyBottomBorder
+                ? BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey[300]!,
+                      ),
+                    ),
+                  )
+                : BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: Colors.grey[300]!,
+                    ),
+                  ),
             margin: EdgeInsets.only(top: 4),
-            height: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                color: Colors.grey[300]!,
-              ),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 12),
+            padding: EdgeInsets.symmetric(vertical: 4),
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  this.value != null
-                      ? Text(
-                          this.value!,
-                          style: Theme.of(context).textTheme.bodyText1,
-                        )
-                      : Text(this.placeholder ?? "Choose date",
-                          style: Theme.of(context).textTheme.caption),
+                  Text(
+                    value != null
+                        ? Jiffy(this.value!).format('dd/MM/yyyy')
+                        : "Select Date",
+                    style: CustomTextStyles.semibold14,
+                  ),
                   this.onDateSelected != null
                       ? Icon(
                           Icons.date_range_outlined,
-                          // color: AppColors.primary,
+                          color: AppColors.primaryText,
                         )
                       : SizedBox(),
                 ],
