@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-##Flutter boilerplate with clean architecture and few default package added:
+## Flutter boilerplate with clean architecture and few default package added:
 - Firebase, analytics
 - Sentry
 - Getx
