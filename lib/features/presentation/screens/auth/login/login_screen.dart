@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:getx_boilerplate/features/presentation/components/widgets/app_logo.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_controller.dart';
+import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
+import 'package:getx_boilerplate/features/presentation/utils/form_validation_utils.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route_name = "/login";
@@ -12,6 +14,24 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final LoginController _controller = Get.find();
+
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Form _buildForm() {
     return Form(
+      key: loginFormKey,
       child: Column(
         children: [
           CustomInput(
             label: "Email",
+            controller: emailController,
+            validator: FormValidationUtils.isEmail,
           ),
           SizedBox(
             height: 12,
@@ -77,10 +100,38 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           CustomButton(
             label: "LOGIN",
-            onPressed: _controller.loginWithEmail,
+            onPressed: () {
+              if (loginFormKey.currentState?.validate() ?? false) {
+                loginFormKey.currentState?.save();
+                onLoginWithEmail();
+              }
+            },
           )
         ],
       ),
     );
+  }
+
+  Future<void> onLoginWithEmail() async {
+    try {
+      final res = await _controller.loginWithEmail(
+        emailController.text,
+        passwordController.text,
+      );
+      if (res != null) {
+        // Navigate to main screen
+        Get.offNamed(
+          BottomTab.route_name,
+        );
+      }
+    } catch (err) {
+      print(err);
+      Get.showSnackbar(
+        GetBar(
+          message: err as String,
+          duration: Duration(seconds: 1),
+        ),
+      );
+    }
   }
 }

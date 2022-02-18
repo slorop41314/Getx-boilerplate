@@ -57,8 +57,9 @@ class _CustomInputState extends State<CustomInput> {
             : SizedBox(),
         Container(
           color: this.widget.isDisabled ? Colors.grey[200] : Colors.white,
-          height: this.widget.isInputArea ? null : 40,
+          // height: this.widget.isInputArea ? null : 40,
           child: TextFormField(
+            validator: widget.validator,
             enabled: !this.widget.isDisabled,
             onChanged: this.widget.onChanged,
             obscureText: this.widget.secureText ? this.showValue : false,
