@@ -1,17 +1,13 @@
-# flu_bloc_boilerplate
-
-A new Flutter project.
+# Flutter Getx Boilerplate
 
 ## Getting Started
 
-#This project is a flutter clean architecrute boilerplate with:
+## Flutter boilerplate with clean architecture and few default package added:
 - Firebase, analytics
 - Sentry
 - Getx
 - Dio
 
-# For new project: 
+## For new project: 
 1. Create new sentry project and change the dns key in app_config.dart
 2. Create and replace google-services.json and GoogleService-info.plist from your own firebase project.
-
-
