@@ -58,6 +58,8 @@ void main() {
 
       // Act
       final response = await sut.loginWithEmail(email, password);
+
+      // Assert
       verify(authRepository.login(email, password)).called(1);
       expect(response?.email, mockUser.email);
       expect(response?.name, mockUser.name);
