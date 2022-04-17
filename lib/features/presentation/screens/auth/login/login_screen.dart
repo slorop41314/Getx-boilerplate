@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:getx_boilerplate/features/presentation/components/widgets/app_logo.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_controller.dart';
 import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
 import 'package:getx_boilerplate/features/presentation/utils/form_validation_utils.dart';
+import 'package:getx_boilerplate/features/presentation/utils/overlay_utils.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route_name = "/login";
@@ -99,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 24,
           ),
           CustomButton(
-            label: "LOGIN",
+            label: AppLocalizations.of(context)!.helloWorld,
             onPressed: () {
               if (loginFormKey.currentState?.validate() ?? false) {
                 loginFormKey.currentState?.save();
@@ -126,12 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } catch (err) {
       print(err);
-      Get.showSnackbar(
-        GetBar(
-          message: err as String,
-          duration: Duration(seconds: 1),
-        ),
-      );
+      OverlayUtils.showErrorSnackbar(err as String);
     }
   }
 }
