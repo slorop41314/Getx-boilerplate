@@ -1,7 +1,7 @@
 class LocalDBConstant {
   static const dbVersion = 1;
 
-  static const dbPassword = "db_pass_0000111";
+  static const dbPassword = 'db_pass_0000111';
 
   static const initialScript = 'assets/sql/initial.sql';
 

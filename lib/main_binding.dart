@@ -13,7 +13,6 @@ class MainBinding extends Bindings {
   @override
   Future<void> dependencies() async {
     // Register all neccesary reuse class here
-    // Its like injection container
     final sharedPref = await SharedPreferences.getInstance();
     Get.put(
       LocalDatabase(),

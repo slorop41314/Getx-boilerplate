@@ -81,7 +81,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await remoteDataSource.resetPassword(request);
       return;
     } catch (err) {
-      print(err);
+      PrintUtils.print(err);
       return Future.error(err);
     }
   }

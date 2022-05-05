@@ -25,9 +25,9 @@ class LocalDatabase extends GetxService {
 
   Future<Database> initializeDb(String dbPass) async {
     final _db = await openDatabase(
-      join(await getDatabasesPath(), "database.db"),
+      join(await getDatabasesPath(), 'database.db'),
       onOpen: (db) {
-        PrintUtils.print("OPEN LOCAL DB");
+        PrintUtils.print('OPEN LOCAL DB');
       },
       password: dbPass,
       version: LocalDBConstant.dbVersion,
