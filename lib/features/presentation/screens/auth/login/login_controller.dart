@@ -1,10 +1,7 @@
 import 'package:dio/dio.dart' as Dio;
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:getx_boilerplate/features/domain/entities/user.dart';
 import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
-import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
 
 class LoginController extends GetxController {
   late AuthRepository authRepository;

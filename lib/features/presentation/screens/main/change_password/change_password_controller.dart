@@ -40,7 +40,7 @@ class ChangePasswordController extends GetxController {
     isLoading(true);
 
     try {
-      final res = await repository.changePassword(
+      await repository.changePassword(
         ChangePasswordRequest(
           currentPassword: currentPasswordController.text,
           password: newPasswordController.text,

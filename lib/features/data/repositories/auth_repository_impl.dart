@@ -59,7 +59,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> changePassword(ChangePasswordRequest request) async {
     try {
-      final res = await remoteDataSource.resetPassword(
+      await remoteDataSource.resetPassword(
         request.toJson(),
       );
       return;
@@ -75,7 +75,7 @@ class AuthRepositoryImpl implements AuthRepository {
       final request = {
         "email": email,
       };
-      final res = await remoteDataSource.resetPassword(request);
+      await remoteDataSource.resetPassword(request);
       return;
     } catch (err) {
       print(err);

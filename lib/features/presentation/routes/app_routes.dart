@@ -37,7 +37,7 @@ class AppRoutes {
     ];
   }
 
-  static PageRouteBuilder _slideRightRoute(Widget page) {
+  static PageRouteBuilder slideRightRoute(Widget page) {
     return PageRouteBuilder(
       pageBuilder: (_, __, ___) => page,
       transitionDuration: Duration(milliseconds: 300),
@@ -57,7 +57,7 @@ class AppRoutes {
     );
   }
 
-  static PageRouteBuilder _fadeInRoute(Widget page) {
+  static PageRouteBuilder fadeInRoute(Widget page) {
     return PageRouteBuilder(
       pageBuilder: (_, __, ___) => page,
       transitionsBuilder: (

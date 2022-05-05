@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final SplashController _controller = Get.find();
+  final SplashController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

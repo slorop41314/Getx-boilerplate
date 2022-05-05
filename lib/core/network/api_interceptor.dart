@@ -38,7 +38,7 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
-    final refreshDio = Dio();
+    // final refreshDio = Dio();
     print(
         "<-- ${err.message} ${(err.response != null ? (err.response!.requestOptions.baseUrl + err.response!.requestOptions.path) : 'URL')}");
     print("${err.response != null ? err.response!.data : 'Unknown Error'}");
