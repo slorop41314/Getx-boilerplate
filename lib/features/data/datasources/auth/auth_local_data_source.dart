@@ -11,32 +11,32 @@ abstract class AuthLocalDataSource {
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   final SharedPreferencesManager sharedPref;
 
-  AuthLocalDataSourceImpl({required this.sharedPref});
+  AuthLocalDataSourceImpl({
+    required this.sharedPref,
+  });
 
   @override
   Future<void> saveSessionData(dynamic json) async {
-    await this.sharedPref.putString(SharedPreferencesManager.keyUserData, json);
+    await sharedPref.putString(SharedPreferencesManager.keyUserData, json as String);
   }
 
   @override
   Future<void> saveAuthToken(String token) async {
-    await this
-        .sharedPref
-        .putString(SharedPreferencesManager.keyAccessToken, token);
+    await sharedPref.putString(SharedPreferencesManager.keyAccessToken, token);
   }
 
   @override
   dynamic getSessionData() {
-    return this.sharedPref.getString(SharedPreferencesManager.keyUserData);
+    return sharedPref.getString(SharedPreferencesManager.keyUserData);
   }
 
   @override
   Future<void> clearSessionData() async {
-    await this.sharedPref.clearAll();
+    await sharedPref.clearAll();
   }
 
   @override
   String? getFcmToken() {
-    return this.sharedPref.getString(SharedPreferencesManager.keyFcmToken);
+    return sharedPref.getString(SharedPreferencesManager.keyFcmToken);
   }
 }

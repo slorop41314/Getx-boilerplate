@@ -24,8 +24,8 @@ void main() {
       "Should call Auth repository - login method when fire login",
       () async {
         // Arrange
-        final email = "email@example.com";
-        final password = "password123";
+        const email = "email@example.com";
+        const password = "password123";
         when(
           authRepository.login(email, password),
         ).thenAnswer(
@@ -44,8 +44,8 @@ void main() {
     );
     test("Should return User when success login", () async {
       // Arrange
-      final email = "email@example.com";
-      final password = "password123";
+      const email = "email@example.com";
+      const password = "password123";
       final mockUser = User(
         email: email,
         name: "Test email",

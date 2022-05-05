@@ -1,4 +1,5 @@
 import 'package:get/instance_manager.dart';
+import 'package:getx_boilerplate/core/local/local_db.dart';
 import 'package:getx_boilerplate/core/local/shared_pref.dart';
 import 'package:getx_boilerplate/core/network/api_interceptor.dart';
 import 'package:getx_boilerplate/core/network/api_provider.dart';
@@ -14,6 +15,10 @@ class MainBinding extends Bindings {
     // Register all neccesary reuse class here
     // Its like injection container
     final sharedPref = await SharedPreferences.getInstance();
+    Get.put(
+      LocalDatabase(),
+      permanent: true,
+    );
     Get.put(
       SharedPreferencesManager(sharedPreferences: sharedPref),
       permanent: true,

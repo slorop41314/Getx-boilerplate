@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:getx_boilerplate/core/local/shared_pref.dart';
+import 'package:getx_boilerplate/core/utils/print_utils.dart';
 
 class ApiInterceptor extends Interceptor {
   late SharedPreferencesManager sharedPreferencesManager;
@@ -12,11 +13,12 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (options.data != null && !(options.data is FormData)) {
-      print("Body: ${jsonEncode(options.data)}, path: ${options.path}");
+    if (options.data != null && !(options.data is! FormData)) {
+      PrintUtils.print(
+        "Body: ${jsonEncode(options.data)}, path: ${options.path}",
+      );
     }
-    final accessToken = this
-        .sharedPreferencesManager
+    final accessToken = sharedPreferencesManager
         .getString(SharedPreferencesManager.keyAccessToken);
     if (accessToken != null) {
       options.headers.addAll({
@@ -28,26 +30,31 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print(
-        "Response: ${response.statusCode} ${response.realUri} ${response.data}");
-
-    response.data = jsonDecode(response.data);
-
+    PrintUtils.print(
+      "Response: ${response.statusCode} ${response.realUri} ${response.data}",
+    );
+    final _responseData = response.data;
+    if (_responseData is String) {
+      response.data = jsonDecode(_responseData);
+    }
     return handler.next(response);
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
     // final refreshDio = Dio();
-    print(
-        "<-- ${err.message} ${(err.response != null ? (err.response!.requestOptions.baseUrl + err.response!.requestOptions.path) : 'URL')}");
-    print("${err.response != null ? err.response!.data : 'Unknown Error'}");
-    print("<-- End error");
+    PrintUtils.print(
+      '<-- ${err.message} ${err.response != null ? (err.response!.requestOptions.baseUrl + err.response!.requestOptions.path) : 'URL'}',
+    );
+    PrintUtils.print(
+      "${err.response != null ? err.response!.data : 'Unknown Error'}",
+    );
+    PrintUtils.print("<-- End error");
     if (err.response?.statusCode == 403) {
       // Refresh token function here
-      return handler.next(err);
+      handler.next(err);
     } else {
-      return handler.next(err);
+      handler.next(err);
     }
   }
 }

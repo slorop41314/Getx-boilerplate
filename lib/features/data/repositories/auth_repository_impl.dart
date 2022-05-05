@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:getx_boilerplate/core/network/api_provider.dart';
+import 'package:getx_boilerplate/core/utils/print_utils.dart';
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_local_data_source.dart';
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_remote_data_source.dart';
 import 'package:getx_boilerplate/features/domain/entities/request/change_password_request.dart';
@@ -19,19 +20,20 @@ class AuthRepositoryImpl implements AuthRepository {
     required this.localDataSource,
   });
 
+  @override
   Future<User> login(String email, String password) async {
     try {
       final param = {
         "email": email,
         "password": password,
       };
-      final response = await this.remoteDataSource.login(param);
+      final response = await remoteDataSource.login(param);
       if (response.statusCode == 200) {
         final bodyData = response.data["data"];
-        await this.localDataSource.saveAuthToken(
-              bodyData["token"],
+        await localDataSource.saveAuthToken(
+              bodyData["token"] as String,
             );
-        await this.localDataSource.saveSessionData(
+        await localDataSource.saveSessionData(
               jsonEncode(bodyData["user"]),
             );
         return User.fromJson(bodyData["user"]);
@@ -42,8 +44,9 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+  @override
   User? getLoggedInUserData() {
-    final data = this.localDataSource.getSessionData();
+    final data = localDataSource.getSessionData();
     if (data == null) return null;
 
     return User.fromJson(
@@ -64,7 +67,7 @@ class AuthRepositoryImpl implements AuthRepository {
       );
       return;
     } catch (err) {
-      print(err);
+      PrintUtils.print(err);
       return Future.error(err);
     }
   }

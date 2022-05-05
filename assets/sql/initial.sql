@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS "TODO" ( "name"	TEXT,	"created_date"	INTEGER, "id" INTEGER,	PRIMARY KEY("id"));
