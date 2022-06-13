@@ -3,6 +3,7 @@ import 'package:getx_boilerplate/features/data/datasources/auth/auth_local_data_
 import 'package:getx_boilerplate/features/data/datasources/auth/auth_remote_data_source.dart';
 import 'package:getx_boilerplate/features/data/repositories/auth_repository_impl.dart';
 import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
+import 'package:getx_boilerplate/features/domain/usecases/interface/auth/login_with_email_use_case.dart';
 
 class AuthBinding extends Bindings {
   @override
@@ -23,6 +24,13 @@ class AuthBinding extends Bindings {
         remoteDataSource: Get.find(),
         localDataSource: Get.find(),
         apiProvider: Get.find(),
+      ),
+    );
+
+    // MARK: - USECASE
+    Get.lazyPut<LoginWithEmailUseCaseImpl>(
+      () => LoginWithEmailUseCaseImpl(
+        authRepository: Get.find(),
       ),
     );
   }

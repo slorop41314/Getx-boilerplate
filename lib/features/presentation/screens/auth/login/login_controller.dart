@@ -1,19 +1,19 @@
 import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/domain/entities/user.dart';
-import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
+import 'package:getx_boilerplate/features/domain/usecases/impl/auth/login_with_email_use_case_impl.dart';
 
 class LoginController extends GetxController {
-  late AuthRepository authRepository;
+  final LoginWithEmailUseCase loginWithEmailUseCase;
 
   LoginController({
-    required this.authRepository,
+    required this.loginWithEmailUseCase,
   });
 
   var isLoadingLogin = false.obs;
 
   Future<User?> loginWithEmail(String email, String password) async {
     isLoadingLogin.value = true;
-    final response = await this.authRepository.login(
+    final response = await this.loginWithEmailUseCase.execute(
           email,
           password,
         );
