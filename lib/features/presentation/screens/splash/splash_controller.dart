@@ -27,7 +27,7 @@ class SplashController extends GetxController {
   }
 
   void _checkAndNavigateUser() async {
-    final user = this.authRepository.getLoggedInUserData();
+    final user = await this.authRepository.getLoggedInUserData();
     if (user != null) {
       await CommonController.find.setCurrentUser(user);
       Get.offAllNamed(BottomTab.route_name);

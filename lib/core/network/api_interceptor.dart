@@ -1,25 +1,31 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:getx_boilerplate/core/local/secure_storage.dart';
 import 'package:getx_boilerplate/core/local/shared_pref.dart';
 import 'package:getx_boilerplate/core/utils/print_utils.dart';
 
 class ApiInterceptor extends Interceptor {
-  late SharedPreferencesManager sharedPreferencesManager;
+  late SecureStorageManager sharedPreferencesManager;
 
   ApiInterceptor({
     required this.sharedPreferencesManager,
   });
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     if (options.data != null && !(options.data is! FormData)) {
       PrintUtils.print(
         "Body: ${jsonEncode(options.data)}, path: ${options.path}",
       );
     }
-    final accessToken = sharedPreferencesManager
-        .getString(SharedPreferencesManager.keyAccessToken);
+    final accessToken = await sharedPreferencesManager.getString(
+      SharedPreferencesManager.keyAccessToken,
+    );
+    options.headers.addAll({
+      "Accept": "application/json",
+    });
     if (accessToken != null) {
       options.headers.addAll({
         "Authorization": "Bearer $accessToken",
@@ -44,10 +50,10 @@ class ApiInterceptor extends Interceptor {
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
     // final refreshDio = Dio();
     PrintUtils.print(
-      '<-- ${err.message} ${err.response != null ? (err.response!.requestOptions.baseUrl + err.response!.requestOptions.path) : 'URL'}',
+      '<--${err.type} ${err.response != null ? (err.response!.requestOptions.baseUrl + err.response!.requestOptions.path) : 'URL'}',
     );
     PrintUtils.print(
-      "${err.response != null ? err.response!.data : 'Unknown Error'}",
+      "${err.response != null ? err.response?.data : 'Unknown Error'}",
     );
     PrintUtils.print("<-- End error");
     if (err.response?.statusCode == 403) {

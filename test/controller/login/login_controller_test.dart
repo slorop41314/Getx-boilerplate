@@ -53,7 +53,7 @@ void main() {
       when(
         authRepository.login(email, password),
       ).thenAnswer(
-        (realInvocation) async => mockUser,
+        (realInvocation)  => Future.value(mockUser),
       );
 
       // Act

@@ -1,42 +1,45 @@
+import 'package:getx_boilerplate/core/local/secure_storage.dart';
 import 'package:getx_boilerplate/core/local/shared_pref.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> saveSessionData(dynamic json);
   Future<void> saveAuthToken(String token);
   Future<void> clearSessionData();
-  dynamic getSessionData();
-  String? getFcmToken();
+  Future<String?> getSessionData();
+  Future<String?> getFcmToken();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
-  final SharedPreferencesManager sharedPref;
+  final SecureStorageManager secureStorage;
 
   AuthLocalDataSourceImpl({
-    required this.sharedPref,
+    required this.secureStorage,
   });
 
   @override
   Future<void> saveSessionData(dynamic json) async {
-    await sharedPref.putString(SharedPreferencesManager.keyUserData, json as String);
+    await secureStorage.putString(
+        SharedPreferencesManager.keyUserData, json as String);
   }
 
   @override
   Future<void> saveAuthToken(String token) async {
-    await sharedPref.putString(SharedPreferencesManager.keyAccessToken, token);
+    await secureStorage.putString(
+        SharedPreferencesManager.keyAccessToken, token);
   }
 
   @override
-  dynamic getSessionData() {
-    return sharedPref.getString(SharedPreferencesManager.keyUserData);
+  Future<String?> getSessionData() {
+    return secureStorage.getString(SharedPreferencesManager.keyUserData);
   }
 
   @override
   Future<void> clearSessionData() async {
-    await sharedPref.clearAll();
+    await secureStorage.clearAll();
   }
 
   @override
-  String? getFcmToken() {
-    return sharedPref.getString(SharedPreferencesManager.keyFcmToken);
+  Future<String?> getFcmToken() {
+    return secureStorage.getString(SharedPreferencesManager.keyFcmToken);
   }
 }

@@ -7,6 +7,7 @@ import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_
 import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
 import 'package:getx_boilerplate/features/presentation/utils/form_validation_utils.dart';
 import 'package:getx_boilerplate/features/presentation/utils/overlay_utils.dart';
+import 'package:getx_boilerplate/core/extension/extension.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route_name = "/login";
@@ -127,8 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       }
     } catch (err) {
-      print(err);
-      OverlayUtils.showErrorSnackbar(err as String);
+      // print(err);
+      OverlayUtils.showErrorSnackbar(err.message);
     }
   }
 }
