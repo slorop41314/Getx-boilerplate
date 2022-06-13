@@ -20,7 +20,7 @@ class ApiProviderImpl implements ApiProvider {
     _dio.interceptors.add(apiInterceptor);
   }
   static BaseOptions options = BaseOptions(
-    baseUrl: "http://adleesya.primaclouds.com",
+    baseUrl: "",
     contentType: "application/json",
     followRedirects: false,
     responseType: ResponseType.plain,
