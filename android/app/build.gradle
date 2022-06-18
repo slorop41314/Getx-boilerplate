@@ -21,6 +21,18 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+
+def dartEnvironmentVariables = []
+if (project.hasProperty('dart-defines')) {
+    dartEnvironmentVariables = project.property('dart-defines')
+        .split(',')
+        .collectEntries { entry ->
+            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+            [(pair.first()): pair.last() == pair.first() ? '': pair.last()]
+        }
+}
+def appBaseName = 'Getx Boilerplate'
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
@@ -34,8 +46,14 @@ android {
     }
 
     defaultConfig {
+manifestPlaceholders = [
+    APP_DISPLAY_NAME: appBaseName + dartEnvironmentVariables.APP_SUFFIX,
+    APP_BUNDLE_SUFFIX:dartEnvironmentVariables.APP_BUNDLE_SUFFIX,
+]
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.flu.getxboilerplate"
+        applicationIdSuffix dartEnvironmentVariables.ENV == 'prod' ? null: dartEnvironmentVariables.APP_BUNDLE_SUFFIX
+
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()

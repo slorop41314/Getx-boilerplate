@@ -1,21 +1,21 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:getx_boilerplate/features/domain/entities/user.dart';
-import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
+import 'package:getx_boilerplate/features/domain/usecases/impl/auth/login_with_email_use_case_impl.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_controller.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'login_controller_test.mocks.dart';
 
-@GenerateMocks([AuthRepository])
+@GenerateMocks([LoginWithEmailUseCase])
 void main() {
   late LoginController sut;
-  late AuthRepository authRepository;
+  late LoginWithEmailUseCase loginWithEmailUseCase;
 
   setUp(() {
-    authRepository = MockAuthRepository();
+    loginWithEmailUseCase = MockLoginWithEmailUseCase();
     sut = LoginController(
-      authRepository: authRepository,
+      loginWithEmailUseCase: loginWithEmailUseCase,
     );
   });
 
@@ -27,7 +27,7 @@ void main() {
         const email = "email@example.com";
         const password = "password123";
         when(
-          authRepository.login(email, password),
+          loginWithEmailUseCase.execute(email, password),
         ).thenAnswer(
           (realInvocation) async => Future.error("Invalid email or password"),
         );
@@ -35,8 +35,8 @@ void main() {
         // Act
         await sut.loginWithEmail(email, password).onError((error, stackTrace) {
           // Assert
-          verify(authRepository.login(email, password)).called(1);
-          verifyNoMoreInteractions(authRepository);
+          verify(loginWithEmailUseCase.execute(email, password)).called(1);
+          verifyNoMoreInteractions(loginWithEmailUseCase);
           return null;
           //
         });
@@ -51,7 +51,7 @@ void main() {
         name: "Test email",
       );
       when(
-        authRepository.login(email, password),
+        loginWithEmailUseCase.execute(email, password),
       ).thenAnswer(
         (realInvocation)  => Future.value(mockUser),
       );
@@ -60,10 +60,10 @@ void main() {
       final response = await sut.loginWithEmail(email, password);
 
       // Assert
-      verify(authRepository.login(email, password)).called(1);
+      verify(loginWithEmailUseCase.execute(email, password)).called(1);
       expect(response?.email, mockUser.email);
       expect(response?.name, mockUser.name);
-      verifyNoMoreInteractions(authRepository);
+      verifyNoMoreInteractions(loginWithEmailUseCase);
     });
   });
 }

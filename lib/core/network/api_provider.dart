@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:getx_boilerplate/core/constant/constant.dart';
 import 'package:getx_boilerplate/core/network/api_interceptor.dart';
 
 abstract class ApiProvider {
@@ -20,7 +21,7 @@ class ApiProviderImpl implements ApiProvider {
     _dio.interceptors.add(apiInterceptor);
   }
   static BaseOptions options = BaseOptions(
-    baseUrl: "",
+    baseUrl: "${AppConst.baseUrl}/api",
     contentType: "application/json",
     followRedirects: false,
     responseType: ResponseType.plain,

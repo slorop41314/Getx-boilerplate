@@ -40,6 +40,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490473496971:android:3584131cd6c895686f0f8e",
+        "android_client_info": {
+          "package_name": "com.flu.getxboilerplate.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490473496971-qembrb2si7bmsea6dsb8iseqa092qrft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNwKI5PSb6Luwt83CwOrV7xaKt2h_5-TU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490473496971-qembrb2si7bmsea6dsb8iseqa092qrft.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490473496971-2j6ocufasi2irb18qs5vemdauvnvohdb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flu.getxboilerplate"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

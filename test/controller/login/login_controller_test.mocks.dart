@@ -4,10 +4,8 @@
 
 import 'dart:async' as _i4;
 
-import 'package:getx_boilerplate/features/domain/entities/request/change_password_request.dart'
-    as _i5;
-import 'package:getx_boilerplate/features/domain/entities/user.dart' as _i2;
-import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart'
+import 'package:getx_boilerplate/features/domain/entities/entity.dart' as _i2;
+import 'package:getx_boilerplate/features/domain/usecases/impl/auth/login_with_email_use_case_impl.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -21,34 +19,20 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeUser_0 extends _i1.Fake implements _i2.User {}
 
-/// A class which mocks [AuthRepository].
+/// A class which mocks [LoginWithEmailUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
-  MockAuthRepository() {
+class MockLoginWithEmailUseCase extends _i1.Mock
+    implements _i3.LoginWithEmailUseCase {
+  MockLoginWithEmailUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.User> login(String? email, String? password) =>
-      (super.noSuchMethod(Invocation.method(#login, [email, password]),
+  _i4.Future<_i2.User> execute(String? email, String? password) =>
+      (super.noSuchMethod(Invocation.method(#execute, [email, password]),
               returnValue: Future<_i2.User>.value(_FakeUser_0()))
           as _i4.Future<_i2.User>);
-  @override
-  _i4.Future<void> resetPassword(String? email) =>
-      (super.noSuchMethod(Invocation.method(#resetPassword, [email]),
-          returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
-  @override
-  _i4.Future<void> changePassword(_i5.ChangePasswordRequest? request) =>
-      (super.noSuchMethod(Invocation.method(#changePassword, [request]),
-          returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
-  @override
-  _i4.Future<void> logout() =>
-      (super.noSuchMethod(Invocation.method(#logout, []),
-          returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
   @override
   String toString() => super.toString();
 }

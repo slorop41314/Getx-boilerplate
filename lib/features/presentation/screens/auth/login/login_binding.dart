@@ -6,7 +6,7 @@ class LoginBinding extends Bindings {
   void dependencies() async {
     Get.lazyPut(
       () => LoginController(
-        authRepository: Get.find(),
+        loginWithEmailUseCase: Get.find(),
       ),
     );
   }
