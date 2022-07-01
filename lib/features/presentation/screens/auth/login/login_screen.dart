@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 24,
           ),
           CustomButton(
-            label: AppLocalizations.of(context)!.helloWorld,
+            label: AppLocalizations.of(context).helloWorld,
             onPressed: () {
               if (loginFormKey.currentState?.validate() ?? false) {
                 loginFormKey.currentState?.save();
