@@ -16,6 +16,7 @@ part 'custom_right_select.dart';
 part 'custom_sheet.dart';
 part 'custom_time_picker.dart';
 part 'loading_indicator.dart';
+part 'custom_tap_scale.dart';
 
 String imagePlaceholder =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtsBeH_z-vguCC5jLivFO47pncpi8hC041w&usqp=CAU";
