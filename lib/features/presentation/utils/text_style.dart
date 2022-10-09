@@ -144,4 +144,12 @@ class CustomTextStyles {
       color: textColor,
     ),
   );
+
+  static final extraBold14 = GoogleFonts.nunito(
+    textStyle: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w800,
+      color: textColor,
+    ),
+  );
 }
