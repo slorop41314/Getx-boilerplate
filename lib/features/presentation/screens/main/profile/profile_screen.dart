@@ -19,7 +19,7 @@ class ProfilePage extends GetView<ProfileController> {
       body: ListView(
         children: [
           _buildTopProfile().sectionContainer(),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           _buildMenuList().sectionContainer(),
@@ -32,31 +32,28 @@ class ProfilePage extends GetView<ProfileController> {
     return Column(
       children: [
         ListTile(
-          title: Text("Profile details"),
+          title: const Text("Profile details"),
           contentPadding: EdgeInsets.zero,
           onTap: () {
             // Get.toNamed(ProfileDetailPage.route_name);
           },
-          trailing: Icon(Icons.chevron_right),
+          trailing: const Icon(Icons.chevron_right),
         ),
         ListTile(
-          title: Text("Change password"),
+          title: const Text("Change password"),
           contentPadding: EdgeInsets.zero,
           onTap: () {
             Get.toNamed(ChangePasswordPage.route_name);
           },
-          trailing: Icon(Icons.chevron_right),
+          trailing: const Icon(Icons.chevron_right),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         CustomButton(
           label: "Log out",
           onPressed: () {},
-          labelColor: AppColors.primary,
-          buttonColor: Colors.white,
-          height: 24,
-          borderColor: AppColors.primary,
+          buttonType: CustomButtonType.secondary,
         )
       ],
     );
@@ -74,7 +71,7 @@ class ProfilePage extends GetView<ProfileController> {
             radius: 36,
             backgroundColor: Colors.grey.shade300,
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           // Text(
