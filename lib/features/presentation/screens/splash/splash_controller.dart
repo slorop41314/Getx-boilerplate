@@ -19,7 +19,7 @@ class SplashController extends GetxController {
     super.onInit();
     _getPackageInfo();
     Timer(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () {
         _checkAndNavigateUser();
       },

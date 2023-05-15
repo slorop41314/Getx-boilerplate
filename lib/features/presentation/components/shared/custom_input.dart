@@ -51,10 +51,10 @@ class _CustomInputState extends State<CustomInput> {
             ? Column(
                 children: [
                   Text(this.widget.label!),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                 ],
               )
-            : SizedBox(),
+            : const SizedBox(),
         Container(
           color: this.widget.isDisabled ? Colors.grey[200] : Colors.white,
           // height: this.widget.isInputArea ? null : 40,
@@ -71,11 +71,11 @@ class _CustomInputState extends State<CustomInput> {
             maxLines: this.widget.isInputArea ? 4 : 1,
             decoration: InputDecoration(
               hintText: this.widget.placeholder,
-              contentPadding: EdgeInsets.symmetric(
+              contentPadding: const EdgeInsets.symmetric(
                 horizontal: 6,
                 vertical: 6,
               ),
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               prefixIcon: this.widget.leadingIcon,
               suffixIcon: this.widget.secureText
                   ? InkWell(
@@ -85,8 +85,8 @@ class _CustomInputState extends State<CustomInput> {
                         });
                       },
                       child: this.showValue
-                          ? Icon(Icons.visibility_off)
-                          : Icon(Icons.visibility),
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility),
                     )
                   : null,
             ),

@@ -13,7 +13,7 @@ class MainBinding extends Bindings {
   Future<void> dependencies() async {
     // Register all neccesary reuse class here
     final sharedPref = await SharedPreferences.getInstance();
-    final secureStorage = FlutterSecureStorage();
+    final secureStorage = const FlutterSecureStorage();
     Get.put(
       LocalDatabase(),
       permanent: true,

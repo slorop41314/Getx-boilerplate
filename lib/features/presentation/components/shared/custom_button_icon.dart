@@ -28,7 +28,7 @@ class CustomButtonIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         color: this.buttonColor,
       ),
-      margin: EdgeInsets.symmetric(horizontal: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 6),
       child: ElevatedButton.icon(
         style: ButtonStyle(
           textStyle: MaterialStateProperty.all(

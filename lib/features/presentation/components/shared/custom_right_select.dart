@@ -50,7 +50,7 @@ class CustomRightSelect<T> extends StatelessWidget {
             labelText: label,
             hintText: placeholder,
             suffix: isLoading
-                ? SizedBox(
+                ? const SizedBox(
                     width: 18,
                     height: 18,
                     child: CircularProgressIndicator(
@@ -58,7 +58,7 @@ class CustomRightSelect<T> extends StatelessWidget {
                       color: AppColors.primary,
                     ),
                   )
-                : Icon(
+                : const Icon(
                     Icons.chevron_right,
                     size: 18,
                   ),
@@ -100,7 +100,7 @@ class _CustomSelectPage<T> extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
         title: Text(
@@ -110,7 +110,7 @@ class _CustomSelectPage<T> extends StatelessWidget {
       ),
       body: ListView.separated(
         separatorBuilder: (_, index) {
-          return Divider(
+          return const Divider(
             height: 1,
           );
         },
@@ -119,7 +119,7 @@ class _CustomSelectPage<T> extends StatelessWidget {
           final item = options[index];
           return ListTile(
             dense: true,
-            contentPadding: EdgeInsets.symmetric(
+            contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
             onTap: () {
@@ -129,11 +129,11 @@ class _CustomSelectPage<T> extends StatelessWidget {
             },
             title: Text(optionsBuilder?.call(item) ?? item.toString()),
             trailing: item == selectedValue
-                ? Icon(
+                ? const Icon(
                     Icons.check_rounded,
                     color: Colors.green,
                   )
-                : SizedBox(),
+                : const SizedBox(),
           );
         },
       ),

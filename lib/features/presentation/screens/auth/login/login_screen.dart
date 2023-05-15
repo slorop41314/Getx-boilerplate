@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:getx_boilerplate/core/extension/extension.dart';
 import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:getx_boilerplate/features/presentation/components/widgets/app_logo.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_controller.dart';
 import 'package:getx_boilerplate/features/presentation/screens/main/bottom_tab.dart';
 import 'package:getx_boilerplate/features/presentation/utils/form_validation_utils.dart';
 import 'package:getx_boilerplate/features/presentation/utils/overlay_utils.dart';
-import 'package:getx_boilerplate/core/extension/extension.dart';
 
 class LoginScreen extends StatefulWidget {
   static const route_name = "/login";
@@ -51,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Column(
                     children: [
                       _buildTopButton(),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       const AppLogo(),
@@ -71,11 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(),
+        const SizedBox(),
         TextButton.icon(
           onPressed: () {},
-          icon: Icon(Icons.help),
-          label: Text("Help"),
+          icon: const Icon(Icons.help),
+          label: const Text("Help"),
         ),
       ],
     );
@@ -91,18 +90,18 @@ class _LoginScreenState extends State<LoginScreen> {
             controller: emailController,
             validator: FormValidationUtils.isEmail,
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           CustomInput(
             label: "Password",
             secureText: true,
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           CustomButton(
-            label: AppLocalizations.of(context).helloWorld,
+            label: "Login",
             onPressed: () {
               if (loginFormKey.currentState?.validate() ?? false) {
                 loginFormKey.currentState?.save();

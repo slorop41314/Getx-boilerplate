@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/presentation/utils/common.dart';
+import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 
 part 'custom_app_bar.dart';

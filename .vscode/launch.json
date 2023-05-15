@@ -10,7 +10,7 @@
       "type": "dart",
       "args": [
         "--dart-define=ENV=dev",
-        "--dart-define=BASE_URL=",
+        "--dart-define=BASE_URL=https://abc.com",
         "--dart-define=APP_SUFFIX= DEV",
         "--dart-define=APP_BUNDLE_SUFFIX=dev"
       ]

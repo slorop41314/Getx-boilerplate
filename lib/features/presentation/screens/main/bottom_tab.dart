@@ -1,6 +1,6 @@
-import 'package:getx_boilerplate/features/presentation/screens/main/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:getx_boilerplate/features/presentation/screens/main/home_screen.dart';
+import 'package:getx_boilerplate/features/presentation/screens/main/setting_screen.dart';
 import 'package:getx_boilerplate/features/presentation/utils/common.dart';
 
 class BottomTab extends StatefulWidget {
@@ -14,7 +14,7 @@ class _BottomTabState extends State<BottomTab> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    SizedBox(),
+    const SizedBox(),
     SettingScreen(),
   ];
 
@@ -37,7 +37,7 @@ class _BottomTabState extends State<BottomTab> {
     return Scaffold(
       body: SafeArea(
         child: PageView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: _widgetOptions,
         ),

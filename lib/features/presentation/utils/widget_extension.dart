@@ -49,21 +49,21 @@ extension WidgetUtils on Widget {
             color: Colors.grey.shade200,
             blurRadius: 5,
             spreadRadius: 3,
-            offset: Offset(0, 1),
+            offset: const Offset(0, 1),
           ),
         ]),
         child: this,
       );
 
   Container bottomSheetContainer() => Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(12),
             topRight: Radius.circular(12),
           ),
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 24,
         ),

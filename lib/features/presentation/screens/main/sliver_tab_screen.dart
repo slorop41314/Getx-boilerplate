@@ -15,7 +15,7 @@ class _SliverTabScreenState extends State<SliverTabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Text("Sliver tab"),
+        child: const Text("Sliver tab"),
       ),
     );
   }

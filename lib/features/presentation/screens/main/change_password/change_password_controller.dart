@@ -1,6 +1,6 @@
+import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:dio/dio.dart' as Dio;
 import 'package:getx_boilerplate/features/domain/entities/request/change_password_request.dart';
 import 'package:getx_boilerplate/features/domain/repositories/auth_repository.dart';
 import 'package:getx_boilerplate/features/presentation/utils/overlay_utils.dart';

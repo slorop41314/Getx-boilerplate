@@ -19,14 +19,14 @@ class ChangePasswordPage extends GetView<ChangePasswordController> {
             "Create New Password",
             style: CustomTextStyles.bold18,
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Text(
             "Enter a new password for your account. We highly recommended you create a unique password ",
             style: CustomTextStyles.regular14.grey,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Column(
@@ -36,7 +36,7 @@ class ChangePasswordPage extends GetView<ChangePasswordController> {
                 secureText: true,
                 controller: controller.currentPasswordController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               CustomInput(
@@ -44,7 +44,7 @@ class ChangePasswordPage extends GetView<ChangePasswordController> {
                 secureText: true,
                 controller: controller.newPasswordController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               CustomInput(

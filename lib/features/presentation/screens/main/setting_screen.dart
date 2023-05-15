@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:getx_boilerplate/features/presentation/utils/common.dart';
-import 'package:flutter/material.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -23,13 +23,13 @@ class _SettingScreenState extends State<SettingScreen>
         "Settings",
         trailing: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {},
           )
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             _createSection("Account", [1, 2]),
@@ -50,7 +50,7 @@ class _SettingScreenState extends State<SettingScreen>
           sectionTitle,
           style: CustomTextStyles.semibold16,
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Column(

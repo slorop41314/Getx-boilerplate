@@ -19,7 +19,7 @@ class CustomTextStyles {
     ),
   );
   static final subtitle2TextStyle = GoogleFonts.nunito(
-    textStyle: TextStyle(
+    textStyle: const TextStyle(
       fontSize: 11,
       fontWeight: FontWeight.w500,
       color: Colors.white,
@@ -47,7 +47,7 @@ class CustomTextStyles {
     ),
   );
   static final haederTextStyle = GoogleFonts.nunito(
-    textStyle: TextStyle(
+    textStyle: const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w600,
       color: Colors.white,

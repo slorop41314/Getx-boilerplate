@@ -7,9 +7,9 @@ class OverlayUtils {
     Get.showSnackbar(
       GetSnackBar(
         message: message,
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         backgroundColor: Colors.red,
-        margin: EdgeInsets.all(16),
+        margin: const EdgeInsets.all(16),
         borderRadius: 8,
         snackPosition: SnackPosition.TOP,
       ),
@@ -33,9 +33,9 @@ class OverlayUtils {
       GetSnackBar(
         title: title,
         message: message,
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         backgroundColor: Colors.black54,
-        margin: EdgeInsets.symmetric(
+        margin: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 12,
         ),

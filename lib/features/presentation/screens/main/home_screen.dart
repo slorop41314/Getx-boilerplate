@@ -1,5 +1,5 @@
-import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:flutter/material.dart';
+import 'package:getx_boilerplate/features/presentation/components/shared/shared.dart';
 import 'package:getx_boilerplate/features/presentation/utils/common.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -7,7 +7,8 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -19,8 +20,8 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
     return Scaffold(
       appBar: CustomAppBar("Home"),
       body: Container(
-        padding: EdgeInsets.all(12),
-        child: CustomImageCarousel(),
+        padding: const EdgeInsets.all(12),
+        child: const CustomImageCarousel(),
       ),
     );
   }
@@ -70,7 +71,7 @@ class _CustomImageCarouselState extends State<CustomImageCarousel> {
                 .toList(),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Row(
@@ -78,12 +79,12 @@ class _CustomImageCarouselState extends State<CustomImageCarousel> {
           children: [1, 2, 3, 4].asMap().entries.map((e) {
             final isCurrent = currentIndex == e.key;
             return AnimatedContainer(
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               color: isCurrent ? AppColors.primary : Colors.grey,
               height: isCurrent ? 8 : 4,
               width: isCurrent ? 15 : 4,
               // decoration: BoxDecoration(borderRadius: ),
-              margin: EdgeInsets.only(right: 12),
+              margin: const EdgeInsets.only(right: 12),
             );
           }).toList(),
         )

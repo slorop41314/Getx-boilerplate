@@ -45,7 +45,7 @@ class CustomDatePicker extends StatelessWidget {
             ? Text(
                 this.label!,
               )
-            : SizedBox(),
+            : const SizedBox(),
         InkWell(
           onTap: onDateSelected != null
               ? () {
@@ -67,24 +67,24 @@ class CustomDatePicker extends StatelessWidget {
                       color: Colors.grey[300]!,
                     ),
                   ),
-            margin: EdgeInsets.only(top: 4),
-            padding: EdgeInsets.symmetric(vertical: 4),
+            margin: const EdgeInsets.only(top: 4),
+            padding: const EdgeInsets.symmetric(vertical: 4),
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     value != null
-                        ? Jiffy(this.value!).format('dd/MM/yyyy')
+                        ? DateFormat('dd/MM/yyyy').format(this.value!)
                         : "Select Date",
                     style: CustomTextStyles.semibold14,
                   ),
                   this.onDateSelected != null
-                      ? Icon(
+                      ? const Icon(
                           Icons.date_range_outlined,
                           color: AppColors.primaryText,
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ],
               ),
             ),

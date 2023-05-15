@@ -20,7 +20,7 @@ class CustomDropdown<T> extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.caption,
+          style: CustomTextStyles.semibold14,
         ),
         Container(
           height: 36,
@@ -32,8 +32,8 @@ class CustomDropdown<T> extends StatelessWidget {
             ),
           ),
           child: DropdownButton<T>(
-              style: Theme.of(context).textTheme.bodyText1,
-              underline: SizedBox(),
+              style: CustomTextStyles.regular14,
+              underline: const SizedBox(),
               isExpanded: true,
               value: this.value,
               items: list,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_binding.dart';
 import 'package:getx_boilerplate/features/presentation/screens/auth/login/login_screen.dart';
@@ -7,7 +8,6 @@ import 'package:getx_boilerplate/features/presentation/screens/main/change_passw
 import 'package:getx_boilerplate/features/presentation/screens/main/change_password/change_password_screen.dart';
 import 'package:getx_boilerplate/features/presentation/screens/splash/splash_binding.dart';
 import 'package:getx_boilerplate/features/presentation/screens/splash/splash_screen.dart';
-import 'package:flutter/material.dart';
 
 class AppRoutes {
   static const initial = SplashScreen.route_name;
@@ -31,7 +31,7 @@ class AppRoutes {
       ),
       GetPage(
         name: ChangePasswordPage.route_name,
-        page: () => ChangePasswordPage(),
+        page: () => const ChangePasswordPage(),
         binding: ChangePasswordBinding(),
       )
     ];
@@ -40,7 +40,7 @@ class AppRoutes {
   static PageRouteBuilder slideRightRoute(Widget page) {
     return PageRouteBuilder(
       pageBuilder: (_, __, ___) => page,
-      transitionDuration: Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 300),
       transitionsBuilder: (
         BuildContext context,
         Animation<double> animation,
@@ -70,7 +70,7 @@ class AppRoutes {
         opacity: animation,
         child: child,
       ),
-      transitionDuration: Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 500),
     );
   }
 }

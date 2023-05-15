@@ -2,7 +2,7 @@ part of 'shared.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
-  final Size preferredSize = Size.fromHeight(kToolbarHeight);
+  final Size preferredSize = const Size.fromHeight(kToolbarHeight);
 
   final String title;
 

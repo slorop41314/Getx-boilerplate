@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_boilerplate/features/presentation/components/widgets/app_logo.dart';
@@ -25,9 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(),
+              const SizedBox(),
               const AppLogo(),
-              SizedBox(),
+              const SizedBox(),
             ],
           ),
         ),

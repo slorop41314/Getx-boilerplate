@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData appTheme() {
   return ThemeData(
     fontFamily: GoogleFonts.rubik().toString(),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       // color: Colors.black,
       elevation: 1,
       iconTheme: IconThemeData(
@@ -16,24 +16,15 @@ ThemeData appTheme() {
     //   color: Colors.black,
     // ),
     primaryColor: AppColors.primary,
-    hintColor: Color(0xffcdd3e0),
+    hintColor: const Color(0xffcdd3e0),
     dividerColor: Colors.grey[100],
     scaffoldBackgroundColor: Colors.white,
-    textTheme: TextTheme(
-      button: GoogleFonts.rubik(
-        textStyle: TextStyle(
-          fontSize: 14,
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    ),
     inputDecorationTheme: InputDecorationTheme(
-      disabledBorder: OutlineInputBorder(
+      disabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
         color: AppColors.border,
       )),
-      enabledBorder: OutlineInputBorder(
+      enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
         color: AppColors.border,
       )),
@@ -46,14 +37,14 @@ ThemeData appTheme() {
         color: Colors.red.withOpacity(0.5),
       )),
       labelStyle: GoogleFonts.rubik(
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           color: Colors.black,
         ),
       ),
     ),
-    dividerTheme: DividerThemeData(
+    dividerTheme: const DividerThemeData(
       color: Color(0xffEBECED),
       thickness: 1,
       space: 1,

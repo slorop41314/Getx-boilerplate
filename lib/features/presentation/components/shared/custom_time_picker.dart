@@ -22,12 +22,13 @@ class CustomTimePicker extends StatelessWidget {
           ? TimeOfDay(
               hour: int.parse(value!.split(":")[0]),
               minute: int.parse(value!.split(":")[1]))
-          : TimeOfDay(hour: 08, minute: 00),
+          : const TimeOfDay(hour: 08, minute: 00),
     );
 
     if (result != null) {
       var response =
-          Jiffy("${result.hour}:${result.minute}", "h:m").format("HH:mm");
+          Jiffy.parse("${result.hour}:${result.minute}", pattern: "h:m")
+              .format(pattern: "HH:mm");
       if (this.onTimeSelected != null) {
         this.onTimeSelected!(response);
       }
@@ -39,7 +40,7 @@ class CustomTimePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        this.label != null ? Text(this.label!) : SizedBox(),
+        this.label != null ? Text(this.label!) : const SizedBox(),
         TextButton(
           onPressed: onTimeSelected != null
               ? () {
@@ -47,7 +48,7 @@ class CustomTimePicker extends StatelessWidget {
                 }
               : null,
           child: Container(
-            margin: EdgeInsets.only(top: 4),
+            margin: const EdgeInsets.only(top: 4),
             height: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -55,7 +56,7 @@ class CustomTimePicker extends StatelessWidget {
                 color: Colors.grey[300]!,
               ),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,11 +64,11 @@ class CustomTimePicker extends StatelessWidget {
                   this.value != null
                       ? Text(
                           this.value!,
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: CustomTextStyles.regular14,
                         )
                       : Text(
                           this.placeholder ?? "Choose time",
-                          style: Theme.of(context).textTheme.caption,
+                          style: CustomTextStyles.regular12,
                         ),
                 ],
               ),

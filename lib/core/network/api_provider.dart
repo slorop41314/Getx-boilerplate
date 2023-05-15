@@ -25,8 +25,8 @@ class ApiProviderImpl implements ApiProvider {
     contentType: "application/json",
     followRedirects: false,
     responseType: ResponseType.plain,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
+    connectTimeout: const Duration(milliseconds: 30000),
+    receiveTimeout: const Duration(milliseconds: 30000),
     validateStatus: (status) {
       return status! < 500;
     },
